@@ -16,6 +16,10 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // My Code------------------------------------------------------|
+/*
+generatePassword: creates random passwords using createPasswordAttempt, checks them with acceptablePassword, then returns an acceptable password attempt
+No Parameters
+*/
 function generatePassword() { //generates random passwords until all criteria are met
   var workingChars = criteriaFinder();
   var passwordLength = passwordLengthFinder();
@@ -28,11 +32,16 @@ function generatePassword() { //generates random passwords until all criteria ar
       tempPassword = createPasswordAttempt(workingChars, passwordLength);
     }
   }
-
   return tempPassword;
 }
 
-function createPasswordAttempt(pChars, pLength) {  //creates a password attempt to be checked by acceptablePassword
+/*
+createPasswordAttempt: uses user inputs for character types and password length to create a password attempt
+Parameters:
+pChars: a string containing a list of all possible characters for the password attempt
+pLength: an integer determining the length, in characters, of the password attempt
+*/
+function createPasswordAttempt(pChars, pLength) {
   var tempPassword = "";
   for (var i = 0; i < pLength; i++) {
     tempPassword += randomCharGenerator(pChars);
@@ -40,7 +49,11 @@ function createPasswordAttempt(pChars, pLength) {  //creates a password attempt 
   return tempPassword;
 }
 
-function criteriaFinder() {  // function to take input for character criteria and set up the variable to select characters from
+/*
+criteriaFinder: creates string of possible characters from user confirms for character types
+No Parameters
+*/
+function criteriaFinder() {
   var workingChars = "";
   var letters = "abcdefghijklmnopqrstuvwxyz";
   var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -75,7 +88,12 @@ function criteriaFinder() {  // function to take input for character criteria an
   }
 }
 
-function passwordLengthFinder() {  //function to find and return the length of the generated password based on user input
+
+/*
+passwordLengthFinder: accepts and varifies user input to determine password length
+No Parameters
+*/
+function passwordLengthFinder() {
   var tempLength = prompt("How many characters would you like to include in your password? (8-128)");
   tempLength = parseInt(tempLength);
   if (tempLength >= 8 && tempLength <= 128) {
@@ -93,6 +111,12 @@ function randomCharGenerator(pString) {  //returns a random character from input
   return tempChar;
 }
 
+/*
+acceptablePassword: tests attempted password against character criteria to determine if it used at least one of each type
+Parameters
+pCharacters: the variable containing all possible characters for password creation
+pAttempt: the current password attempt being checked
+*/
 function acceptablePassword(pCharacters, pAttempt) { //tests attempted password against character criteria to determine if it used at least one of each type
   var acceptablePassword;
   var letters = "abcdefghijklmnopqrstuvwxyz";
@@ -108,6 +132,7 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
   var attemptHasNumbers = false;
   var attemptHasSpecial = false;
 
+  //parses through possible characters to check for each type of character
   for (var i = 0; i < pCharacters.length; i++) {
     if (letters.includes(pCharacters.charAt(i))) {
       charHasLetters = true;
@@ -122,7 +147,7 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
       charHasSpecial = true;
     }
   }
-
+  //parses password attempt to check for each type of character
   for (var i = 0; i < pAttempt.length; i++) {
     if (letters.includes(pAttempt.charAt(i))) {
       attemptHasLetters = true;
@@ -138,12 +163,12 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
     }
   }
 
+  // compares the possible character results to the password attempt results to determine if password is acceptable
   if (charHasLetters === attemptHasLetters && charHasCapitols === attemptHasCapitols && charHasNumbers === attemptHasNumbers && charHasSpecial === attemptHasSpecial) {
     acceptablePassword = true;
   }
   else {
     acceptablePassword = false;
   }
-  
   return acceptablePassword;
 }
