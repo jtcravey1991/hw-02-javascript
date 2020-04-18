@@ -56,7 +56,7 @@ No Parameters
 function criteriaFinder() {
   var workingChars = "";
   var letters = "abcdefghijklmnopqrstuvwxyz";
-  var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numbers = "1234567890";
   var specialChars = "!@#$%^&*()-=_+;':";
 
@@ -65,9 +65,9 @@ function criteriaFinder() {
   if (includeLowerCase === true) {
     workingChars += letters;
   }
-  var includeUpperCase = confirm("Would you like your password to include capitol letters?");
+  var includeUpperCase = confirm("Would you like your password to include capital letters?");
   if (includeUpperCase === true) {
-    workingChars += capitols;
+    workingChars += capitals;
   }
   var includeNumbers = confirm("Would you like your password to include numbers?");
   if (includeNumbers === true) {
@@ -120,15 +120,15 @@ pAttempt: the current password attempt being checked
 function acceptablePassword(pCharacters, pAttempt) { //tests attempted password against character criteria to determine if it used at least one of each type
   var acceptablePassword;
   var letters = "abcdefghijklmnopqrstuvwxyz";
-  var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numbers = "1234567890";
   var specialChars = "!@#$%^&*()-=_+;':";
   var charHasLetters = false;
-  var charHasCapitols = false;
+  var charHasCapitals = false;
   var charHasNumbers = false;
   var charHasSpecial = false;
   var attemptHasLetters = false;
-  var attemptHasCapitols = false;
+  var attemptHasCapitals = false;
   var attemptHasNumbers = false;
   var attemptHasSpecial = false;
 
@@ -137,8 +137,8 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
     if (letters.includes(pCharacters.charAt(i))) {
       charHasLetters = true;
     }
-    else if (capitols.includes(pCharacters.charAt(i))) {
-      charHasCapitols = true;
+    else if (capitals.includes(pCharacters.charAt(i))) {
+      charHasCapitals = true;
     }
     else if (numbers.includes(pCharacters.charAt(i))) {
       charHasNumbers = true;
@@ -152,8 +152,8 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
     if (letters.includes(pAttempt.charAt(i))) {
       attemptHasLetters = true;
     }
-    else if (capitols.includes(pAttempt.charAt(i))) {
-      attemptHasCapitols = true;
+    else if (capitals.includes(pAttempt.charAt(i))) {
+      attemptHasCapitals = true;
     }
     else if (numbers.includes(pAttempt.charAt(i))) {
       attemptHasNumbers = true;
@@ -164,7 +164,7 @@ function acceptablePassword(pCharacters, pAttempt) { //tests attempted password 
   }
 
   // compares the possible character results to the password attempt results to determine if password is acceptable
-  if (charHasLetters === attemptHasLetters && charHasCapitols === attemptHasCapitols && charHasNumbers === attemptHasNumbers && charHasSpecial === attemptHasSpecial) {
+  if (charHasLetters === attemptHasLetters && charHasCapitals === attemptHasCapitals && charHasNumbers === attemptHasNumbers && charHasSpecial === attemptHasSpecial) {
     acceptablePassword = true;
   }
   else {
