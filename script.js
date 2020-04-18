@@ -20,7 +20,7 @@ generateBtn.addEventListener("click", writePassword);
 generatePassword: creates random passwords using createPasswordAttempt, checks them with acceptablePassword, then returns an acceptable password attempt
 No Parameters
 */
-function generatePassword() { //generates random passwords until all criteria are met
+function generatePassword() {
   var workingChars = criteriaFinder();
   var passwordLength = passwordLengthFinder();
 
