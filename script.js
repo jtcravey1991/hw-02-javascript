@@ -24,3 +24,23 @@ var letters = "abcdefghijklmnopqrstuvwxyz";
 var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890"
 var specialChars = "!@#$%^&*()-=_+;':";
+
+// function to take input for character criteria and set up the variable to select characters from
+function criteriaFinder() {
+  var includeLowerCase = confirm("Would you like your password to include lower case letters?");
+  if (includeLowerCase === true) {
+    workingChars += letters;
+  }
+  var includeUpperCase = confirm("Would you like your password to include capitol letters?");
+  if (includeUpperCase === true) {
+    workingChars += capitols;
+  }
+  var includeNumbers = confirm("Would you like your password to include numbers?");
+  if (includeNumbers === true) {
+    workingChars += numbers;
+  }
+  var includeSpecialChars = confirm("Would you like your password to include special characters? i.e.: !@#$%^&*()-=_+;':");
+  if (includeSpecialChars === true) {
+    workingChars += specialChars;
+  }
+}
