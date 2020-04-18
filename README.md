@@ -33,8 +33,8 @@ essential code examples of what was written:
 
 This is the generatePassword function, which is whats being called to create and return the password
 to be displayed by the webpage:
-![picture of code containing generatePassword function](Images/generatePasswrd-function.JPG)
+![picture of code containing generatePassword function](Images/generatePassword-function.JPG)
 
 And here is the code for the function that accepts and checks the users input for
 password length:
-![code used to accept and verify user input on character length](Images/passwordLengthFinder.JPG)
+![code used to accept and verify user input on character length](Images/passwordLengthFinder-function.JPG)
