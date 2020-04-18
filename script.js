@@ -16,11 +16,20 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // My Code------------------------------------------------------|
-function generatePassword() {
+function generatePassword() { //generates random passwords until all criteria are met
   var workingChars = criteriaFinder();
   var passwordLength = passwordLengthFinder();
-  var tempPassword = createPasswordAttempt();
-  var passwordAccepted
+
+  var tempPassword = createPasswordAttempt(workingChars, passwordLength);
+  var passwordAccepted = false;
+  while (passwordAccepted === false) {
+    passwordAccepted = acceptablePassword(workingChars, tempPassword);
+    if (passwordAccepted === false) {
+      tempPassword = createPasswordAttempt(workingChars, passwordLength);
+    }
+  }
+
+  return tempPassword;
 }
 
 function createPasswordAttempt(pChars, pLength) {  //creates a password attempt to be checked by acceptablePassword
