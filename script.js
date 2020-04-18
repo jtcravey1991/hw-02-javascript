@@ -19,15 +19,16 @@ generateBtn.addEventListener("click", writePassword);
 
 //declared variables
 var password;
-var workingChars;
 var passwordLength;
-var letters = "abcdefghijklmnopqrstuvwxyz";
-var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "1234567890"
-var specialChars = "!@#$%^&*()-=_+;':";
 
-// function to take input for character criteria and set up the variable to select characters from
-function criteriaFinder() {
+function criteriaFinder() {  // function to take input for character criteria and set up the variable to select characters from
+  var workingChars;
+  var letters = "abcdefghijklmnopqrstuvwxyz";
+  var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "1234567890"
+  var specialChars = "!@#$%^&*()-=_+;':";
+
+  //prompts to determine criteria
   var includeLowerCase = confirm("Would you like your password to include lower case letters?");
   if (includeLowerCase === true) {
     workingChars += letters;
@@ -44,17 +45,31 @@ function criteriaFinder() {
   if (includeSpecialChars === true) {
     workingChars += specialChars;
   }
+
+  //determines if function completes or restarts due to lack of criteria
+  if (workingChars) {
+    console.log(workingChars);
+    return workingChars;
+  }
+  else {
+    alert("No criteria were chosen. Please try again");
+    criteriaFinder();
+  }
 }
 
-function passwordLengthFinder() {
+function passwordLengthFinder() {  //function to find and return the length of the generated password based on user input
   var tempLength = prompt("How many characters would you like to include in your password? (8-128)");
   tempLength = parseInt(tempLength);
   if (tempLength >= 8 && tempLength <= 128) {
     alert("You have chosen " + tempLength + " characters.");
-    passwordLength = tempLength;
+    console.log(tempLength);
+    return tempLength;
   }
   else {
     alert("Unrecognized or invalid input. Please try again.");
     passwordLengthFinder();
   }
 }
+
+criteriaFinder();
+passwordLengthFinder();
