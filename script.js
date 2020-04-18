@@ -16,7 +16,20 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // My Code------------------------------------------------------|
+function generatePassword() {
+  var workingChars = criteriaFinder();
+  var passwordLength = passwordLengthFinder();
+  var tempPassword = createPasswordAttempt();
+  var passwordAccepted
+}
 
+function createPasswordAttempt(pChars, pLength) {  //creates a password attempt to be checked by acceptablePassword
+  var tempPassword;
+  for (var i = 0; i < pLength; i++) {
+    tempPassword += randomCharGenerator(pChars);
+  }
+  return tempPassword;
+}
 
 function criteriaFinder() {  // function to take input for character criteria and set up the variable to select characters from
   var workingChars;
