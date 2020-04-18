@@ -17,15 +17,12 @@ generateBtn.addEventListener("click", writePassword);
 
 // My Code------------------------------------------------------|
 
-//declared variables
-var password;
-var passwordLength;
 
 function criteriaFinder() {  // function to take input for character criteria and set up the variable to select characters from
   var workingChars;
   var letters = "abcdefghijklmnopqrstuvwxyz";
   var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numbers = "1234567890"
+  var numbers = "1234567890";
   var specialChars = "!@#$%^&*()-=_+;':";
 
   //prompts to determine criteria
@@ -71,5 +68,62 @@ function passwordLengthFinder() {  //function to find and return the length of t
   }
 }
 
-criteriaFinder();
-passwordLengthFinder();
+function randomCharGenerator(pString) {  //returns a random character from input pString
+  var tempChar = pString.charAt(Math.floor(Math.random() * pString.length));
+  return tempChar;
+}
+
+function acceptablePassword(pCharacters, pAttempt) { //tests attempted password against character criteria to determine if it used at least one of each type
+  var acceptablePassword;
+  var letters = "abcdefghijklmnopqrstuvwxyz";
+  var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "1234567890";
+  var specialChars = "!@#$%^&*()-=_+;':";
+  var charHasLetters = false;
+  var charHasCapitols = false;
+  var charHasNumbers = false;
+  var charHasSpecial = false;
+  var attemptHasLetters = false;
+  var attemptHasCapitols = false;
+  var attemptHasNumbers = false;
+  var attemptHasSpecial = false;
+
+  for (var i = 0; i < pCharacters.length; i++) {
+    if (letters.includes(pCharacters.charAt(i))) {
+      charHasLetters = true;
+    }
+    else if (capitols.includes(pCharacters.charAt(i))) {
+      charHasCapitols = true;
+    }
+    else if (numbers.includes(pCharacters.charAt(i))) {
+      charHasNumbers = true;
+    }
+    else if (specialChars.includes(pCharacters.charAt(i))) {
+      charHasSpecial = true;
+    }
+  }
+
+  for (var i = 0; i < pAttempt.length; i++) {
+    if (letters.includes(pAttempt.charAt(i))) {
+      attemptHasLetters = true;
+    }
+    else if (capitols.includes(pAttempt.charAt(i))) {
+      attemptHasCapitols = true;
+    }
+    else if (numbers.includes(pAttempt.charAt(i))) {
+      attemptHasNumbers = true;
+    }
+    else if (specialChars.includes(pAttempt.charAt(i))) {
+      attemptHasSpecial = true;
+    }
+  }
+
+  if (charHasLetters === attemptHasLetters && charHasCapitols === attemptHasCapitols && charHasNumbers === attemptHasNumbers && charHasSpecial === attemptHasSpecial) {
+    acceptablePassword = true;
+  }
+  else {
+    acceptablePassword = false;
+  }
+  
+  return acceptablePassword;
+}
