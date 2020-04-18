@@ -33,7 +33,7 @@ function generatePassword() { //generates random passwords until all criteria ar
 }
 
 function createPasswordAttempt(pChars, pLength) {  //creates a password attempt to be checked by acceptablePassword
-  var tempPassword;
+  var tempPassword = "";
   for (var i = 0; i < pLength; i++) {
     tempPassword += randomCharGenerator(pChars);
   }
@@ -41,7 +41,7 @@ function createPasswordAttempt(pChars, pLength) {  //creates a password attempt 
 }
 
 function criteriaFinder() {  // function to take input for character criteria and set up the variable to select characters from
-  var workingChars;
+  var workingChars = "";
   var letters = "abcdefghijklmnopqrstuvwxyz";
   var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numbers = "1234567890";
@@ -67,7 +67,6 @@ function criteriaFinder() {  // function to take input for character criteria an
 
   //determines if function completes or restarts due to lack of criteria
   if (workingChars) {
-    console.log(workingChars);
     return workingChars;
   }
   else {
@@ -81,7 +80,6 @@ function passwordLengthFinder() {  //function to find and return the length of t
   tempLength = parseInt(tempLength);
   if (tempLength >= 8 && tempLength <= 128) {
     alert("You have chosen " + tempLength + " characters.");
-    console.log(tempLength);
     return tempLength;
   }
   else {
