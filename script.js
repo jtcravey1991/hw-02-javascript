@@ -15,3 +15,12 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+// My Code------------------------------------------------------|
+
+//declared variables
+var password;
+var workingChars;
+var letters = "abcdefghijklmnopqrstuvwxyz";
+var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "1234567890"
+var specialChars = "!@#$%^&*()-=_+;':";
