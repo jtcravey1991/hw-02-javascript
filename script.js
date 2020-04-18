@@ -20,6 +20,7 @@ generateBtn.addEventListener("click", writePassword);
 //declared variables
 var password;
 var workingChars;
+var passwordLength;
 var letters = "abcdefghijklmnopqrstuvwxyz";
 var capitols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890"
@@ -42,5 +43,18 @@ function criteriaFinder() {
   var includeSpecialChars = confirm("Would you like your password to include special characters? i.e.: !@#$%^&*()-=_+;':");
   if (includeSpecialChars === true) {
     workingChars += specialChars;
+  }
+}
+
+function passwordLengthFinder() {
+  var tempLength = prompt("How many characters would you like to include in your password? (8-128)");
+  tempLength = parseInt(tempLength);
+  if (tempLength >= 8 && tempLength <= 128) {
+    alert("You have chosen " + tempLength + " characters.");
+    passwordLength = tempLength;
+  }
+  else {
+    alert("Unrecognized or invalid input. Please try again.");
+    passwordLengthFinder();
   }
 }
